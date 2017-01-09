@@ -7,6 +7,8 @@ $(function() {
   var totalMonthlySalary = 0;
 
   $('#employeesTable').on('click', '.deleteButton', function() {
+    var salaryToRemoveFromTotal = $(this).parent().prev().text();
+    updateMonthlySalary("-" + salaryToRemoveFromTotal);
     $(this).parent().parent().remove(); // could also use $(this).closest('tr').remove();
   });
 
@@ -44,10 +46,15 @@ $(function() {
     $('#newEmployeeForm input[type="text"]').val('');
     $('#newEmployeeForm input[type="number"]').val('');
 
+    updateMonthlySalary(newEmployeeObject.salary);
+
+  });
+
+  function updateMonthlySalary(newEmployeeSalary) {
     // With new employee, divide salary by 12, add to current totalMonthlySalary.
-    totalMonthlySalary += newEmployeeObject.salary / 12;
+    totalMonthlySalary += newEmployeeSalary / 12;
     console.log('totalMonthlySalary is ', totalMonthlySalary);
 
     $('#monthlySalary').text(totalMonthlySalary.toLocaleString("en-US", { style: "currency", currency: "USD"}));
-  });
+  };
 });
