@@ -4,6 +4,7 @@
 
 $(function() {
   console.log('jQuery is working!!')
+  var totalMonthlySalary = 0;
   $('#newEmployeeForm').on('submit', function(event) {
     // console.log(event);
     event.preventDefault(); //stop the page from reloading and redirectiong
@@ -29,9 +30,12 @@ $(function() {
       '<td>' + newEmployeeObject.lastName + '</td>' +
       '<td>' + newEmployeeObject.number + '</td>' +
       '<td>' + newEmployeeObject.title + '</td>' +
-      '<td>' + newEmployeeObject.salary +'</td>' +
+      '<td>' + newEmployeeObject.salary + '</td>' +
     '</tr>';
 
     $('#employeesTable').append(newRow);
+
+    $('#newEmployeeForm input[type="text"]').val('');
+    $('#newEmployeeForm input[type="number"]').val('');
   });
 });
