@@ -37,5 +37,11 @@ $(function() {
 
     $('#newEmployeeForm input[type="text"]').val('');
     $('#newEmployeeForm input[type="number"]').val('');
+
+    // With new employee, divide salary by 12, add to current totalMonthlySalary.
+    totalMonthlySalary += newEmployeeObject.salary / 12;
+    console.log('totalMonthlySalary is ', totalMonthlySalary);
+
+    $('#monthlySalary').text(totalMonthlySalary.toLocaleString("en-US", { style: "currency", currency: "USD"}));
   });
 });
