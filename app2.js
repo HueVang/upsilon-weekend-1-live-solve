@@ -5,6 +5,11 @@
 $(function() {
   console.log('jQuery is working!!')
   var totalMonthlySalary = 0;
+
+  $('#employeesTable').on('click', '.deleteButton', function() {
+    $(this).parent().parent().remove(); // could also use $(this).closest('tr').remove();
+  });
+
   $('#newEmployeeForm').on('submit', function(event) {
     // console.log(event);
     event.preventDefault(); //stop the page from reloading and redirectiong
@@ -25,13 +30,14 @@ $(function() {
     // Do not need semi-colon after "for" loops. Only for assignments and functions.
     console.log(newEmployeeObject);
 
-    var newRow = '<tr>' +
+    var newRow = $('<tr>' +
       '<td>' + newEmployeeObject.firstName + '</td>' +
       '<td>' + newEmployeeObject.lastName + '</td>' +
       '<td>' + newEmployeeObject.number + '</td>' +
       '<td>' + newEmployeeObject.title + '</td>' +
       '<td>' + newEmployeeObject.salary + '</td>' +
-    '</tr>';
+      '<td><button class="deleteButton">Delete</button><td>' +
+    '</tr>');
 
     $('#employeesTable').append(newRow);
 
