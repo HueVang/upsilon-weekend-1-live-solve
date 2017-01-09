@@ -23,5 +23,15 @@ $(function() {
     }
     // Do not need semi-colon after "for" loops. Only for assignments and functions.
     console.log(newEmployeeObject);
+
+    var newRow = '<tr>' +
+      '<td>' + newEmployeeObject.firstName + '</td>' +
+      '<td>' + newEmployeeObject.lastName + '</td>' +
+      '<td>' + newEmployeeObject.number + '</td>' +
+      '<td>' + newEmployeeObject.title + '</td>' +
+      '<td>' + newEmployeeObject.salary +'</td>' +
+    '</tr>';
+
+    $('#employeesTable').append(newRow);
   });
 });
